@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -153,8 +154,8 @@ SOCIAL_AUTH_FACEBOOK_KEY = '2013055035786795'
 SOCIAL_AUTH_FACEBOOK_SECRET = 'd01b3c5990c37e0c099120b30eccdddb'
 SOCIAL_AUTH_FACEBOOK_SCOPE = ['email'] 
 
-SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '607913922237-hpc0id3t89s5nec0cf4v3nk9i4r3d83k.apps.googleusercontent.com'
-SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = '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'
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = os.getenv('607913922237-hpc0id3t89s5nec0cf4v3nk9i4r3d83k.apps.googleusercontent.com')
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = os.getenv('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')
 
 SOCIAL_AUTH_PIPELINE = [
     'social_core.pipeline.social_auth.social_details',
