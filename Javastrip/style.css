@@ -164,6 +164,23 @@ section .title h2{
 section .title p{
     font-size:1.15rem;
 }
+
+section .tabs {
+    display: flex;
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+section .tab {
+    flex: 1;
+    padding: 10px;
+    text-align: center;
+    border: 1px solid #ccc;
+    background-color: #f1f1f1;
+}
+section .tab.active {
+    background-color: #ddd;
+}
+
 section .about-self::after{
     content:"";
     clear:both;

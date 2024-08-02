@@ -41,6 +41,22 @@
                 <button class="mouse"><i class="fa-solid fa-computer-mouse"></i></button>
             </div>
         </main>
+        <section id="trend" class="trend">
+            <div class="container">
+                <div class="title">
+                    <h4>STD Improvement</h4>
+                    <h2>공정별 산포 개선 Trend</h2>
+                </div>
+                <div class="trend-inner">
+                    <div class="tabs">
+                        <div class="tab active" onclick="switchTab(0)">Tab 1</div>
+                        <div class="tab" onclick="switchTab(1)">Tab 2</div>
+                        <div class="tab" onclick="switchTab(2)">Tab 3</div>
+                    </div>
+                    <canvas id="myChart"></canvas>
+                </div>
+            </div>
+        </section>
         <section id="about" class="about">
             <div class="container">
                 <div class="title">
@@ -208,6 +224,7 @@
                 </div>
             </div>
         </section>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
         <script src="script.js"></script>
     </body>
 </html>

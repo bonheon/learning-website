@@ -59,3 +59,49 @@ for(let i =0; i< scrollMoveEl.length; i++){
         animationMove(target);
     })
 }
+
+const dataSets = [
+    {
+        label: 'Trend 1',
+        data: [10, 20, 30, 40, 50, 60],
+        borderColor: 'red',
+        borderWidth: 1
+    },
+    {
+        label: 'Trend 2',
+        data: [5, 15, 25, 35, 45, 55],
+        borderColor: 'blue',
+        borderWidth: 1
+    },
+    {
+        label: 'Trend 3',
+        data: [20, 30, 40, 50, 60, 70],
+        borderColor: 'green',
+        borderWidth: 1
+    }
+];
+
+const ctx = document.getElementById('myChart').getContext('2d');
+let chart = new Chart(ctx, {
+    type: 'line',
+    data: {
+        labels: ['January', 'February', 'March', 'April', 'May', 'June'],
+        datasets: [dataSets[0]]
+    },
+    options: {
+        responsive: true,
+        scales: {
+            y: {
+                beginAtZero: true
+            }
+        }
+    }
+});
+
+function switchTab(index) {
+    document.querySelectorAll('.tab').forEach((tab, idx) => {
+        tab.classList.toggle('active', idx === index);
+    });
+    chart.data.datasets = [dataSets[index]];
+    chart.update();
+}
