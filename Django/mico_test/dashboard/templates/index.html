@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Chart Example</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <h1>Select Data Type</h1>
+    <form id="data-form">
+        <select name="data_type" id="data_type">
+            <option value="p13">13p</option>
+            <option value="edge">Edge</option>
+            <option value="exed">Exed</option>
+        </select>
+        <input type="submit" value="Get Data">
+    </form>
+
+    <h1>Chart</h1>
+    <canvas id="myChart"></canvas>
+
+    <script>
+        $(document).ready(function() {
+            var ctx = document.getElementById('myChart').getContext('2d');
+            var chart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: [],
+                    datasets: [{
+                        label: 'Data',
+                        data: [],
+                        borderColor: 'rgba(75, 192, 192, 1)',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        x: {
+                            type: 'time',
+                            time: {
+                                unit: 'minute'
+                            }
+                        }
+                    }
+                }
+            });
+
+            $('#data-form').submit(function(event) {
+                event.preventDefault();
+                var dataType = $('#data_type').val();
+
+                $.ajax({
+                    url: "{% url 'get_data' %}",
+                    data: {
+                        'data_type': dataType
+                    },
+                    dataType: 'json',
+                    success: function(response) {
+                        chart.data.labels = response.timestamps;
+                        chart.data.datasets[0].data = response.values;
+                        chart.data.datasets[0].label = dataType + ' Data';
+                        chart.update();
+                    },
+                    error: function(xhr, status, error) {
+                        console.log("AJAX Error: ", status, error);
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

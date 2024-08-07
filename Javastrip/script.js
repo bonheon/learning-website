@@ -63,7 +63,7 @@ for(let i =0; i< scrollMoveEl.length; i++){
 const dataSets = [
     {
         label: 'Trend 1',
-        data: [10, 20, 30, 40, 50, 60],
+        data: [5, 20, 10, 40, 30, 60],
         borderColor: 'red',
         borderWidth: 1
     },
@@ -75,7 +75,7 @@ const dataSets = [
     },
     {
         label: 'Trend 3',
-        data: [20, 30, 40, 50, 60, 70],
+        data: [60, 50, 40, 40, 30, 20],
         borderColor: 'green',
         borderWidth: 1
     }
